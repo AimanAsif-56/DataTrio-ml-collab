@@ -36,8 +36,8 @@ requires-python = "~=3.10.0"
 
 [tool.ruff]
 line-length = 99
-src = ["datatrio_ml_collab"]
-include = ["pyproject.toml", "datatrio_ml_collab/**/*.py"]
+src = ["src"]
+include = ["pyproject.toml", "src/**/*.py"]
 
 [tool.ruff.lint]
 extend-select = ["I"]  # Add import sorting
