@@ -1,61 +1,51 @@
 # DataTrio-ml-collab
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+Git-based collaborative machine learning project developed for the
+Git-Based Collaboration for an ML Project assignment.
 
-Git-based collaborative machine learning project using Git, DVC, CI, and reproducible experiments
+The project demonstrates collaborative Git workflows, reproducible machine
+learning experiments, data/model versioning, automated quality checks, and
+continuous integration.
 
-## Project Organization
+## Dataset
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         datatrio_ml_collab and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── datatrio_ml_collab   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes datatrio_ml_collab a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
-```
+### KDD Cup 10% Dataset
 
---------
+This project uses the **KDD Cup 10% dataset**, a network intrusion detection
+dataset derived from the KDD Cup 1999 dataset.
 
+The dataset is used to develop a binary classification model that distinguishes
+normal network connections from attack connections.
+
+The dataset was approved for use in this project by the course instructor.
+
+> The raw dataset will be managed using DVC rather than committed directly to
+> the Git repository.
+
+## Team
+
+| Member | Role |
+|---|---|
+| Aiman | Platform Owner |
+| Arooj | Data Owner |
+| Rabia | Model Owner |
+
+## Project Structure
+
+```text
+DataTrio-ml-collab/
+├── .github/
+│   └── workflows/          # GitHub Actions workflows
+├── configs/                # Project configuration
+├── data/                   # Dataset files (managed with DVC)
+├── models/                 # Trained models
+├── notebooks/              # Jupyter notebooks
+├── reports/                # Generated reports and figures
+├── src/
+│   └── datatrio_ml_collab/ # Project source code
+├── tests/                  # Automated tests
+├── .gitignore              # Files excluded from Git
+├── CONTRIBUTING.md         # Contribution and Git workflow rules
+├── pyproject.toml          # Python project and tool configuration
+├── README.md               # Project documentation
+└── uv.lock                 # Locked Python dependencies
