@@ -1,0 +1,4 @@
+# Pre-commit configuration scaffold.
+# Full hooks will be configured in Phase 3.
+
+repos: []
