@@ -9,6 +9,7 @@
 !/models/**/
 !/models/**/.gitkeep
 !/models/**/*.dvc
+!/models/.gitignore
 
 # MLflow
 mlruns/
