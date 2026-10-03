@@ -18,6 +18,10 @@ jobs:
 
       - name: Install pre-commit
         run: pip install pre-commit
-
+        
+      - name: Create large test file
+        run: |
+          python -c "open('large-test-file.txt', 'wb').write(b'0' * 1048577)"
+          
       - name: Run pre-commit
         run: pre-commit run --all-files
