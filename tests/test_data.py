@@ -1,5 +1,4 @@
-import pytest
+def test_package_import():
+    import datatrio_ml_collab
 
-
-def test_code_is_tested():
-    assert False
+    assert datatrio_ml_collab is not None
