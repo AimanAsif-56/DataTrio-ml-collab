@@ -16,6 +16,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 dependencies = [
+    "cryptography>=50.0.2",
+    "dvc[gdrive]>=3.67.1",
     "ipython",
     "jupyterlab",
     "loguru",
@@ -24,6 +26,7 @@ dependencies = [
     "numpy",
     "pandas",
     "pip",
+    "pyopenssl>=26.4.0",
     "pytest",
     "python-dotenv",
     "ruff",
@@ -45,4 +48,13 @@ extend-select = ["I"]  # Add import sorting
 [tool.ruff.lint.isort]
 known-first-party = ["datatrio_ml_collab"]
 force-sort-within-sections = true
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "jupytext>=1.19.5",
+    "nbstripout>=0.9.1",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+]
 
