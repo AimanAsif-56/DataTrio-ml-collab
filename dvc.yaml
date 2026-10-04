@@ -20,6 +20,8 @@ stages:
       - data/processed/features.csv
       - data/processed/labels.csv
       - src/datatrio_ml_collab/modeling/train.py
+    params:
+      - train
 
     outs:
       - models/model.pkl
