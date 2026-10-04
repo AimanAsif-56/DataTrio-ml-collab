@@ -19,6 +19,8 @@ stages:
     deps:
     - data/processed/features.csv
     - data/processed/labels.csv
+    params:
+    - train
     outs:
     - models/model.pkl
 
