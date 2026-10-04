@@ -1,0 +1,5 @@
+outs:
+- md5: 14f33593a50aa18168d5f8bb194eb6f6
+  size: 75383770
+  hash: md5
+  path: kddcup.csv
