@@ -1,33 +1,35 @@
 stages:
   prepare_dataset:
-    cmd: py -m datatrio_ml_collab.dataset
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.dataset
     deps:
-    - data/raw/kddcup.csv
+      - data/raw/kddcup.csv
     outs:
-    - data/processed/dataset.csv
+      - data/processed/dataset.csv
 
   generate_features:
-    cmd: py -m datatrio_ml_collab.features
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.features
     deps:
-    - data/processed/dataset.csv
+      - data/processed/dataset.csv
     outs:
-    - data/processed/features.csv
-    - data/processed/labels.csv
+      - data/processed/features.csv
+      - data/processed/labels.csv
 
   train_model:
-    cmd: py -m datatrio_ml_collab.modeling.train
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.train
     deps:
-    - data/processed/features.csv
-    - data/processed/labels.csv
+      - data/processed/features.csv
+      - data/processed/labels.csv
+      - src/datatrio_ml_collab/modeling/train.py
     params:
-    - train
+      - train
+
     outs:
-    - models/model.pkl
+      - models/model.pkl
 
   predict:
-    cmd: py -m datatrio_ml_collab.modeling.predict
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.predict
     deps:
-    - data/processed/features.csv
-    - models/model.pkl
+      - data/processed/features.csv
+      - models/model.pkl
     outs:
-    - data/processed/predictions.csv
+      - data/processed/predictions.csv

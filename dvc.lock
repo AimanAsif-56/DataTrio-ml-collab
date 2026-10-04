@@ -2,6 +2,7 @@ schema: '2.0'
 stages:
   prepare_dataset:
     cmd: py -m datatrio_ml_collab.dataset
+
     deps:
     - path: data/raw/kddcup.csv
       hash: md5
@@ -14,6 +15,7 @@ stages:
       size: 20195179
   generate_features:
     cmd: py -m datatrio_ml_collab.features
+
     deps:
     - path: data/processed/dataset.csv
       hash: md5
@@ -29,7 +31,7 @@ stages:
       md5: cefd8d2109680c9d6ef4799a9b31120d
       size: 1366570
   train_model:
-    cmd: py -3.10 -m datatrio_ml_collab.modeling.train
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.train
     deps:
     - path: data/processed/features.csv
       hash: md5
@@ -39,13 +41,19 @@ stages:
       hash: md5
       md5: 3daea488c67f3d8d6c94d804a9f6bfb5
       size: 4277465
+    params:
+      params.yaml:
+        train:
+          n_estimators: 50
+          max_depth: 24
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: e8920f5fe2fbef8d9bcda1cb6286e41a
-      size: 19438497
+      md5: 69f23396c25041a68561dfbaae2c0bbf
+      size: 9323457
+
   predict:
-    cmd: py -3.10 -m datatrio_ml_collab.modeling.predict
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.predict
     deps:
     - path: data/processed/features.csv
       hash: md5
@@ -53,10 +61,11 @@ stages:
       size: 136969157
     - path: models/model.pkl
       hash: md5
-      md5: e8920f5fe2fbef8d9bcda1cb6286e41a
-      size: 19438497
+      md5: 69f23396c25041a68561dfbaae2c0bbf
+      size: 9323457
     outs:
     - path: data/processed/predictions.csv
       hash: md5
-      md5: 3bc050abd620843a2fed4df84d5918ed
-      size: 4277447
+      md5: db37c4327b63d292b446e59d0241b4d1
+      size: 4277424
+
