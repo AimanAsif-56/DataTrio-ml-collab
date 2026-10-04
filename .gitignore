@@ -1,5 +1,7 @@
-# Data
-/data/
+# Data: ignore dataset files, but keep folder placeholders
+/data/*
+!/data/**/
+!/data/**/.gitkeep
 
 # Mac OS-specific storage files
 .DS_Store
@@ -189,3 +191,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+mlruns/
