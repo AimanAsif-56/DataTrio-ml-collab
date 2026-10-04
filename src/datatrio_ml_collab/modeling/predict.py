@@ -1,7 +1,8 @@
 from pathlib import Path
 
+import joblib
+import pandas as pd
 from loguru import logger
-from tqdm import tqdm
 import typer
 
 from datatrio_ml_collab.config import MODELS_DIR, PROCESSED_DATA_DIR
@@ -11,19 +12,24 @@ app = typer.Typer()
 
 @app.command()
 def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    features_path: Path = PROCESSED_DATA_DIR / "test_features.csv",
+    features_path: Path = PROCESSED_DATA_DIR / "features.csv",
     model_path: Path = MODELS_DIR / "model.pkl",
-    predictions_path: Path = PROCESSED_DATA_DIR / "test_predictions.csv",
-    # -----------------------------------------
+    predictions_path: Path = PROCESSED_DATA_DIR / "predictions.csv",
 ):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Performing inference for model...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Inference complete.")
-    # -----------------------------------------
+    logger.info("Loading features...")
+    X = pd.read_csv(features_path)
+
+    logger.info("Loading trained model...")
+    model = joblib.load(model_path)
+
+    logger.info("Generating predictions...")
+    predictions = model.predict(X)
+
+    predictions_df = pd.DataFrame({"prediction": predictions})
+    predictions_df.to_csv(predictions_path, index=False)
+
+    logger.success(f"Predictions saved to {predictions_path}")
+    logger.info(f"Total predictions: {len(predictions)}")
 
 
 if __name__ == "__main__":
