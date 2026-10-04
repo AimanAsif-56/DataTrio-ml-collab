@@ -1,5 +1,18 @@
-# Data
-/data/
+# Data: ignore dataset files, but keep folders, placeholders and DVC files
+/data/*
+!/data/**/
+!/data/**/.gitkeep
+!/data/**/*.dvc
+
+# Models: ignore model files, but keep folders, placeholders and DVC files
+/models/*
+!/models/**/
+!/models/**/.gitkeep
+!/models/**/*.dvc
+!/models/.gitignore
+
+# MLflow
+mlruns/
 
 # Mac OS-specific storage files
 .DS_Store
@@ -188,4 +201,5 @@ cython_debug/
 .ruff_cache/
 
 # PyPI configuration file
-.pypircmlruns/ 
+.pypirc
+mlruns/
