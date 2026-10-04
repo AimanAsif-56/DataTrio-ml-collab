@@ -49,6 +49,7 @@ stages:
       hash: md5
       md5: 69f23396c25041a68561dfbaae2c0bbf
       size: 9323457
+
   predict:
     cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.predict
     deps:
@@ -65,3 +66,4 @@ stages:
       hash: md5
       md5: db37c4327b63d292b446e59d0241b4d1
       size: 4277424
+
