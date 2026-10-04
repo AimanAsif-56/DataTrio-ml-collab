@@ -1,0 +1,71 @@
+schema: '2.0'
+stages:
+  prepare_dataset:
+    cmd: py -m datatrio_ml_collab.dataset
+
+    deps:
+    - path: data/raw/kddcup.csv
+      hash: md5
+      md5: d59372d590cf64b2a3e87fac55ec7a26
+      size: 20194567
+    outs:
+    - path: data/processed/dataset.csv
+      hash: md5
+      md5: bd22f6211e533841d7de78e1f87845a6
+      size: 20195179
+  generate_features:
+    cmd: py -m datatrio_ml_collab.features
+
+    deps:
+    - path: data/processed/dataset.csv
+      hash: md5
+      md5: bd22f6211e533841d7de78e1f87845a6
+      size: 20195179
+    outs:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: 9683bcbb7d363b208a528c31889d713f
+      size: 40297621
+    - path: data/processed/labels.csv
+      hash: md5
+      md5: cefd8d2109680c9d6ef4799a9b31120d
+      size: 1366570
+  train_model:
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.train
+    deps:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: b91952be3f7cd7e39ac084848c0655d8
+      size: 136969157
+    - path: data/processed/labels.csv
+      hash: md5
+      md5: 3daea488c67f3d8d6c94d804a9f6bfb5
+      size: 4277465
+    params:
+      params.yaml:
+        train:
+          n_estimators: 50
+          max_depth: 24
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 69f23396c25041a68561dfbaae2c0bbf
+      size: 9323457
+
+  predict:
+    cmd: .\.venv\Scripts\python.exe -m datatrio_ml_collab.modeling.predict
+    deps:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: b91952be3f7cd7e39ac084848c0655d8
+      size: 136969157
+    - path: models/model.pkl
+      hash: md5
+      md5: 69f23396c25041a68561dfbaae2c0bbf
+      size: 9323457
+    outs:
+    - path: data/processed/predictions.csv
+      hash: md5
+      md5: db37c4327b63d292b446e59d0241b4d1
+      size: 4277424
+
