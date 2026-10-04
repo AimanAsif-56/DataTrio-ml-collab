@@ -20,7 +20,10 @@ jobs:
           uv run ruff check . --fix
           uv run ruff format .
 
-      - name: Unit tests
+      - name: Install package
+        run: uv pip install -e .
+
+      - name: Test
         run: uv run pytest tests/
 
       - name: Data checks
