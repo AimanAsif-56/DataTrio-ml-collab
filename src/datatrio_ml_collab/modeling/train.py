@@ -2,6 +2,7 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
+import yaml
 from loguru import logger
 import typer
 
@@ -25,6 +26,11 @@ def main(
     X = pd.read_csv(features_path)
     y = pd.read_csv(labels_path).iloc[:, 0]
 
+    with open("params.yaml", "r") as f:
+        params = yaml.safe_load(f)
+
+    train_params = params["train"]
+
     logger.info(f"Features: {X.shape}")
     logger.info(f"Labels: {y.shape}")
 
@@ -39,7 +45,8 @@ def main(
     logger.info("Training Random Forest model...")
 
     model = RandomForestClassifier(
-        n_estimators=100,
+        n_estimators=train_params["n_estimators"],
+        max_depth=train_params["max_depth"],
         random_state=42,
         n_jobs=-1,
     )
