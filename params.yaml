@@ -1,2 +1,12 @@
+seed: 42
+
+data:
+  raw_path: data/raw/kddcup.data_10_percent
+  binary: true
+
+split:
+  test_size: 0.2
+
 train:
-  max_depth: 30
+  n_estimators: 50
+  max_depth: 24
