@@ -39,11 +39,15 @@ stages:
       hash: md5
       md5: 3daea488c67f3d8d6c94d804a9f6bfb5
       size: 4277465
+    - path: src/datatrio_ml_collab/modeling/train.py
+      hash: md5
+      md5: 2062f9d0de88d51e3df58a0f23acd3de
+      size: 1611
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: e8920f5fe2fbef8d9bcda1cb6286e41a
-      size: 19438497
+      md5: 46452a52dae306dc35e8f66803dea3ac
+      size: 19280289
   predict:
     cmd: py -3.10 -m datatrio_ml_collab.modeling.predict
     deps:
@@ -53,10 +57,10 @@ stages:
       size: 136969157
     - path: models/model.pkl
       hash: md5
-      md5: e8920f5fe2fbef8d9bcda1cb6286e41a
-      size: 19438497
+      md5: 46452a52dae306dc35e8f66803dea3ac
+      size: 19280289
     outs:
     - path: data/processed/predictions.csv
       hash: md5
-      md5: 3bc050abd620843a2fed4df84d5918ed
+      md5: b5a07adfbb3b3f494cfbc88df6b67653
       size: 4277447

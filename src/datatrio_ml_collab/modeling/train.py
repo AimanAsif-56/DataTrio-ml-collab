@@ -39,11 +39,11 @@ def main(
     logger.info("Training Random Forest model...")
 
     model = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42,
-        n_jobs=-1,
-    )
-
+    n_estimators=100,
+    max_depth=30,
+    random_state=42,
+    n_jobs=-1,
+)
     model.fit(X_train, y_train)
 
     predictions = model.predict(X_test)
