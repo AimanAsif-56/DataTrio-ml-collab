@@ -41,8 +41,8 @@ stages:
       size: 4277465
     - path: src/datatrio_ml_collab/modeling/train.py
       hash: md5
-      md5: 2062f9d0de88d51e3df58a0f23acd3de
-      size: 1611
+      md5: 9c76b20693e3d2e5c651dfbac1ee1cf7
+      size: 1715
     outs:
     - path: models/model.pkl
       hash: md5
