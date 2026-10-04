@@ -9,4 +9,4 @@ split:
 
 train:
   n_estimators: 50
-  max_depth: 12
+  max_depth: 24
